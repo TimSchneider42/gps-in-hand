@@ -1,0 +1,77 @@
+<?xml version="1.0" ?>
+<robot name="cylinder">
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <cylinder length="0.025" radius="0.01"/>
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0.0125"/>
+            <material name="orange">
+                <color rgba="1.0 0.3 0.0 1"/>
+            </material>
+        </visual>
+
+        <inertial>
+            <mass value="0.0"/>
+            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+        </inertial>
+    </link>
+
+    <joint name="cylinder_joint" type="revolute">
+        <parent link="base_link"/>
+        <child link="cylinder_link"/>
+        <origin xyz="0 0 0.125"/>
+        <limit effort="0.00001" velocity="0.0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="cylinder_link">
+        <visual>
+            <geometry>
+                <cylinder length="0.2" radius="0.025"/>
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <material name="greyblue">
+                <color rgba="0.2 0.4 0.6 1"/>
+            </material>
+        </visual>
+
+        <inertial>
+            <mass value="0.005"/>
+            <inertia ixx="0.00349" ixy="0.0" ixz="0.0" iyy="0.00349" iyz="0.0" izz="0.0003125"/>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+        </inertial>
+
+        <collision>
+            <geometry>
+                <cylinder length="0.2" radius="0.025"/>
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+        </collision>
+    </link>
+
+    <joint name="top_joint" type="fixed">
+        <parent link="cylinder_link"/>
+        <child link="top_link"/>
+        <origin xyz="0 0 0.1"/>
+    </joint>
+
+    <link name="top_link">
+        <visual>
+            <geometry>
+                <box size="0.025 0.005, 0.005"/>
+            </geometry>
+            <origin rpy="0 0 0" xyz="0.0125 0 0"/>
+            <material name="red">
+                <color rgba="1.0 0.0 0.0 1"/>
+            </material>
+        </visual>
+
+        <inertial>
+            <mass value="0.0"/>
+            <inertia ixx="0.001" ixy="0.0" ixz="0.001" iyy="0.0" iyz="0.0" izz="0.0005"/>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+        </inertial>
+    </link>
+</robot>

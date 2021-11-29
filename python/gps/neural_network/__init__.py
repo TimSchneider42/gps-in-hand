@@ -1,0 +1,2 @@
+from .neural_network import NeuralNetwork
+from .neural_network_fully_connected import NeuralNetworkFullyConnected
